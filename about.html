@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Julie's Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Maitree:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/about.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="nav-wrapper">
+  <nav class="navbar">
+    <div class="logo">Julie</div>
+
+    <!-- Checkbox for mobile menu toggle -->
+    <input type="checkbox" id="menu-toggle" />
+    <label class="hamburger" for="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <ul class="menuItems">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="project.html">Product</a></li>
+      <li><a href="work.html">Design</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- Section 1: Header -->
+  <section class="about-header container">
+    <h3>About Me</h3>
+    <a class="intro-btn">Julie Phan 👋</a>
+  </section>
+
+  <!-- Section 2: Main Content -->
+  <section class="about-main">
+    <div class="container">
+      <div class="about-container">
+        
+        <!-- Left Column: Image -->
+        <div class="about-image">
+          <img src="assets/img/pfp.JPG" alt="Julie Phan">
+        </div>
+
+        <!-- Right Column: Info -->
+
+        <div class="about-info">
+        <p class="intro">
+          Hello! I'm a <span class="designer">designer</span> who believes creativity should feel as <em>joyful</em> as it is functional.  
+
+          I specialize in turning wireframes into <span class="bloom">experiences that bloom with life</span>.
+        </p>
+
+        <hr>
+
+        <!-- About Me -->
+        <div class="about-info">
+          <h3>A little more about me:</h3>
+          <ul class="about-list">
+            <li>B.S. in Cognitive Science, Minor in Digital Humanities – UCLA '25</li>
+            <li>I love pickleball and board games ⚁</li>
+          </ul>
+        </div>
+
+
+        <hr>
+
+        <!-- About Me -->
+        <div class="about-info">
+          <h3>Experiences:</h3>
+          <ul class="about-list">
+            <li>Lead Design | UCLA Student Affairs | 2022-2025</li>
+            
+            <li>Creative Director | UCLA ENIGMA | 2022-2025</li>
+
+            <li>Design Lead | UCLA DEVX | 2023-2025</li>
+
+
+            <li>UX/UI Intern | GBCS Group | 2023</li>
+          
+
+          </ul>
+        </div>
+
+
+        <hr>
+
+
+        <div class="contact-buttons">
+          <a href="https://drive.google.com/file/d/1vPg8i_2Ix5w3N_l0IJXru3JbNc-RUi4n/view?usp=sharing" target="_blank" class="about-btn">
+            <i class="fa-solid fa-file-pdf"></i> RESUME
+          </a>
+          <a href="https://www.linkedin.com/in/juliephan12/" target="_blank" class="about-btn">
+            <i class="fa-brands fa-linkedin"></i> LINKEDIN
+          </a>
+        </div>
+
+
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  
+
+  <!-- Marquee / Ticker -->
+  <div class="marquee">
+    <div class="container">
+      <div class="marquee__track">
+        <span>Adobe Illustrator</span>
+        <span>Adobe InDesign</span>
+        <span>FIGMA</span>
+        <span>Framer</span>
+        <span>Procreate</span>
+        <span>HTML/CSS</span>
+        <span>Wireframing</span>
+        <span>Prototyping</span>
+        <span>Adobe Illustrator</span>
+        <span>Adobe InDesign</span>
+        <span>FIGMA</span>
+        <span>Framer</span>
+        <span>Procreate</span>
+        <span>HTML/CSS</span>
+        <span>Wireframing</span>
+        <span>Prototyping</span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer id="main-footer">
+    <div class="container">
+      <p>Copyright &copy; 2025 | Julie's Portfolio ♡</p>
+    </div>
+  </footer>
+
+  <!-- Navbar Script -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".menuItems");
+
+    hamburger.addEventListener("click", () => {
+      const isActive = hamburger.classList.toggle("active");
+      menu.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", isActive);
+    });
+  </script>
+
+</body>
+</html>

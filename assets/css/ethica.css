@@ -1,0 +1,979 @@
+/* ------------------- */
+/* CSS RESET / CLEANUP */
+/* ------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: #212121; /* main dark background */
+  color: #fff;          /* readable body text */
+}
+
+
+
+
+
+
+a {
+  text-decoration: none;
+  color: #FFD1E5; /* accent for links */
+}
+
+
+
+/* ------------------- */
+/* SCROLLBAR           */
+/* ------------------- */
+
+
+/* 🌸 Frosted Pastel Pink Scrollbar 🌸 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFD1E5;
+  border-radius: 20px;
+  backdrop-filter: blur(4px); /* frosted glass effect */
+  transition: all 0.3s ease;
+}
+
+
+
+/* For Firefox browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 184, 210, 0.8) rgba(255, 230, 240, 0.1);
+}
+
+
+
+
+/* ------------------- */
+/* GLOBAL HEADINGS     */
+/* ------------------- */
+h1, .primary-header {
+  font-family: 'Maitree', serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.2;
+  color: #fff;   /* headings white */
+  margin-bottom: 16px;
+}
+
+h2, .primary-subheading {
+  font-family: 'Maitree', serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+h3, .primary-small-heading {
+  font-family: 'Maitree', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+h4, .secondary-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+h5, .secondary-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+h6, .secondary-small-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+
+p, .body-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+
+
+/* ------------------- */
+/* NAVBAR              */
+/* ------------------- */
+.nav-wrapper {
+  width: 100%;
+  background: rgba(33, 33, 33, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.logo {
+  font-family: 'Maitree', serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff;
+}
+
+.menuItems {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+}
+
+.menuItems li a {
+  font-family: 'Maitree', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuItems li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #FFD1E5;
+  transition: width 0.3s ease;
+}
+
+.menuItems li a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger Menu */
+#menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001; /* above menu */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* X animation */
+#menu-toggle:checked + .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:checked + .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .menuItems {
+    position: fixed;
+    top: 0;
+    right: -220px;
+    height: 100vh;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 0;
+    background: rgba(33,33,33,0.95);
+    backdrop-filter: blur(6px);
+    border-radius: 0 0 0 8px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* 👇 Add this: menu slides in when active */
+  .menuItems.active {
+    right: 0;
+  }
+
+  /* optional: X animation for hamburger */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+
+
+
+
+/* ------------------- */
+/* SECTION             */
+/* ------------------- */
+
+.section-divider {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  margin: 10px auto; /* space above/below */
+  border: none;
+  border-radius: 1px; /* subtle rounding */
+  background-color: #444; /* solid white line */
+}
+
+
+
+.subsection-divider {
+  grid-column: 1 / -1;       /* spans both grid columns */
+  height: 1px;               /* keeps spacing */
+  background: none !important;  /* removes any background gradient */
+  border: none !important;      /* removes any default borders */
+  margin: 20px 0;            /* vertical spacing */
+}
+
+
+
+
+/* ------------------- */
+/* ABOUT SECTION       */
+/* ------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 70px auto;
+  padding: 0 20px;
+}
+
+.grid-left {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Vertical accent line */
+.accent-line {
+  width: 4px;
+  background-color: #F4CFCB;
+  border-radius: 100px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 14px; /* space from accent line */
+}
+
+.project-title {
+  font-family: 'Crimson Text', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.project-role {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.project-years {
+  font-size: 14px;
+  color: #aaa;
+  letter-spacing: -0.5px;
+}
+
+.project-tools {
+  font-size: 13px;
+  color: #ddd;
+  margin-top: 0px;
+}
+
+.grid-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-overview {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 16px 0;
+}
+
+.contributions-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.contributions-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.contributions-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background-color: #E5C2FF;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .accent-line {
+    display: none;
+  }
+  .left-content {
+    padding-left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ------------------- */
+/* Project Section     */
+/* ------------------- */
+.project-section {
+  width: 100%;
+  background-color: #212121;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.project-container {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  gap: 60px;
+  width: 100%;
+  align-items: start;
+}
+
+.project-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-title-left {
+  font-family: 'Maitree', serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.project-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.project-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #8254ff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.project-button:hover {
+  background: #a176ff;
+  transform: translateY(-2px);
+}
+
+/* Subgrid for Type & Skills */
+.project-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.project-subgrid h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.project-subgrid p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Right Column */
+
+.project-right {
+  flex: 1;
+  display: flex;
+}
+
+
+.project-right img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .project-subgrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-right img {
+    height: auto;
+  }
+}
+
+
+
+
+/* ------------------- */
+/* Buttom Section      */
+/* ------------------- */
+
+.about-btn {
+  display: inline-flex; /* keeps icon + text aligned */
+  align-items: center;
+  gap: 6px; /* space between text and arrow */
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFD1E5;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 24px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content; /* keeps it tight */
+  text-decoration: none; /* removes underline */
+}
+
+.about-btn:hover {
+  border-color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+}
+
+.about-btn:focus,
+.about-btn:active {
+  outline: none;
+  border-color: #FFD1E5;
+}
+
+/* Optional: make the arrow shift slightly on hover */
+.about-btn:hover .arrow {
+  transform: translate(2px, -2px);
+  transition: transform 0.3s ease;
+}
+
+
+
+
+
+
+
+/* ------------------- */
+/* OVERVIEW SECTION    */
+/* ------------------- */
+.overview-section {
+  max-width: 1000px;
+  margin: 50px auto 80px auto;
+  padding: 0px;
+  color: #f5f5f5;
+}
+
+.section-title {
+  font-family: 'Maitree', serif;
+  font-size: 28px;
+  font-weight: 450;
+  margin-bottom: 40px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.headsection-title {
+  font-family: 'Maitree', serif;
+  font-size: 20px;
+  font-weight: 450;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  text-align: left;
+  color: #ffffff;
+}
+
+
+/* Grid Layout */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Outlined blocks with subtle aura */
+.outlined-block {
+  padding: 28px;
+  border: 1px solid rgba(255, 209, 229, 0.5);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+
+
+/* Eyebrows + Text */
+.eyebrow {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFD1E5; /* soft pink accent */
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eyebrow i {
+  font-size: 16px;
+}
+
+/* Paragraph text */
+.overview-block p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .outlined-block {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+
+
+/* ------------------- */
+/* DESIGN SECTION      */
+/* ------------------- */
+
+
+.design-process-image {
+  max-width: 1000px;
+  margin: 40px auto 0 auto; /* spacing from grid and center alignment */
+  width: 100%;
+  border-radius: 12px;
+}
+
+.design-process-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 209, 229, 0.5);
+}
+
+
+
+/* ------------------- */
+/* RESEARCH QUESTIONS  */
+/* ------------------- */
+
+
+
+
+.research-questions {
+  padding: 20px;
+  background: rgba(255, 209, 229, 0.05); /* soft pinkish tint */
+  border-left: 4px solid #FFD1E5; /* subtle accent */
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.research-questions .eyebrow_text {
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFD1E5;
+  margin-bottom: 12px;
+  gap: 6px;
+}
+
+.research-questions ul {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+}
+
+.research-questions ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.research-questions ul li::before {
+  content: "•"; /* custom bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #FFD1E5; /* same pink accent */
+  font-size: 14px;
+  line-height: 1;
+}
+
+
+
+/* Eyebrows + Text */
+.eyebrow_text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFD1E5; /* soft pink accent */
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Maitree', serif;
+}
+
+
+
+
+
+/* ------------------- */
+/* DIVIDER             */
+/* ------------------- */
+
+
+
+.section-divider {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  margin: 50px auto;
+  border: none;
+  border-radius: 50px;
+  
+  /* Soft pink aura effect */
+  background: linear-gradient(
+    90deg,
+    rgba(255,209,229,0.2) 0%,    /* soft fade left */
+    rgba(255,209,229,0.6) 50%,   /* core glow */
+    rgba(255,209,229,0.2) 100%   /* soft fade right */
+  );
+
+  /* subtle glow */
+  box-shadow: 0 0 12px rgba(255,209,229,0.15);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.section-divider:hover {
+  transform: scaleX(1.03);
+  box-shadow: 0 0 18px rgba(255,209,229,0.25);
+}
+
+
+
+
+
+
+
+/* ------------------- */
+/* INSIGHTS + DATA     */
+/* ------------------- */
+
+.insight-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.insight-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.insight-list li::before {
+  content: "›"; /* clean directional accent */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #FFD1E5;
+  font-weight: bold;
+}
+
+/* Data Stats Grid */
+.data-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stat {
+  background: rgba(255, 209, 229, 0.05);
+  border: 1px solid rgba(255, 209, 229, 0.25);
+  border-radius: 10px;
+  text-align: center;
+  padding: 12px;
+}
+
+.stat .percent {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  color: #FFD1E5;
+  margin-bottom: 4px;
+}
+
+.stat p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 0;
+}
+
+.data-sub {
+  font-size: 13px;
+  color: #FFD1E5;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+
+
+
+
+
+
+
+/* ------------------- */
+/* SOLUTION SECTION    */
+/* ------------------- */
+
+.solution-process-image {
+  max-width: 1000px;
+  margin: 40px auto 0 auto; /* spacing from grid and center alignment */
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
+.solution-process-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 209, 229, 0.5);
+}
+
+.solution-process-image-noborder {
+  max-width: 1000px;
+  margin: 40px auto 0 auto; /* spacing from grid and center alignment */
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
+.solution-process-image-noborder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.userflow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.userflow-right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.userflow-right img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+
+/* Outlined blocks with subtle aura */
+.userflow-block {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  position: relative;
+}
+
+
+
+/* ------------------- */
+/* FOOTER              */
+/* ------------------- */
+#main-footer {
+  background: #212121;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #e0e0e0;
+  margin-top: 40px;
+}
+
+
+
+
+.footer {
+  text-align: center;
+  padding: 4rem 1rem;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  border-top: 1px solid rgba(255,209,229,0.15);
+}
+.footer p {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0px;
+}
+
+
+
+
